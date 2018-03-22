@@ -1,0 +1,64 @@
+{
+	"name": "my-cli",
+	"version": "1.0.0",
+	"description": "This is a start kit to create nodejs command line tool",
+	"main": "dist/myCli.cjs.js",
+	"keywords": [
+		"start kit",
+		"rollup",
+		"nodejs",
+		"cli"
+	],
+	"author": {
+		"name": "Bowen Li",
+		"email": "superdev@outlook.com.au"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-plugin-external-helpers": "^6.22.0",
+		"babel-preset-env": "^1.6.1",
+		"faucet": "^0.0.1",
+		"husky": "^0.14.3",
+		"lint-staged": "^6.0.0",
+		"prettier": "1.9.2",
+		"rollup": "^0.50.0",
+		"rollup-plugin-babel": "^3.0.3",
+		"rollup-plugin-commonjs": "^8.2.6",
+		"rollup-plugin-execute": "^1.0.0",
+		"rollup-plugin-json": "^2.3.0",
+		"rollup-plugin-node-resolve": "^3.0.0",
+		"rollup-plugin-uglify": "^2.0.1"
+	},
+	"preferGlobal": true,
+	"bin": {
+		"myCli": "dist/myCli.cjs.js"
+	},
+	"scripts": {
+		"build": "rollup -c",
+		"dev": "rollup -c -w",
+		"test": "node test/test.js | faucet",
+		"pretest": "npm run build",
+		"precommit": "lint-staged",
+		"format": "prettier --trailing-comma es5 --single-quote --no-semi --write 'src/**/*.js'"
+	},
+	"lint-staged": {
+		"*.{js,json,css,md}": [
+			"prettier  --trailing-comma es5 --single-quote --no-semi --write",
+			"git add"
+		],
+		"yarn.lock": [
+			"git rm --cached",
+			"git add"
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:bowen31337/node-cli-tool-start-kit.git"
+	},
+	"engines": {
+		"node": ">=8.4.0"
+	},
+	"dependencies": {
+		"figlet": "^1.2.0"
+	}
+}
